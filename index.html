@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydra Carbon Cleaning | Mobile Engine Cleaning Hyderabad</title>
+    <meta name="description" content="Professional carbon cleaning service at your doorstep. Restore engine performance for bikes, cars, autos, lorries across Hyderabad.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js for Reactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        .pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid #3b82f6;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-in { animation: slideIn 0.6s ease-out forwards; }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Carbon Score Gauge */
+        .gauge-bg { stroke: #1e293b; }
+        .gauge-fill {
+            stroke: #3b82f6;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s ease-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        /* Option Card Hover */
+        .option-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .option-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+        }
+        .option-card.selected {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Marquee */
+        .marquee-container { overflow: hidden; }
+        .marquee-content {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Smoke Effect */
+        .smoke {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: smoke 8s ease-in-out infinite;
+        }
+        @keyframes smoke {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Accordion */
+        .accordion-content {
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 500px;
+        }
+
+        /* Engine Particles */
+        .particle {
+            position: absolute;
+            background: rgba(59, 130, 246, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body class="bg-slate-950 text-slate-100 overflow-x-hidden" x-data="hydraApp()">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="droplets" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">Hydra<span class="gradient-text">Carbon</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#what-is" class="text-sm font-medium text-slate-300 hover:text-white transition">What is Carbon Cleaning?</a>
+                    <a href="#benefits" class="text-sm font-medium text-slate-300 hover:text-white transition">Benefits</a>
+                    <a href="#checkup" class="text-sm font-medium text-slate-300 hover:text-white transition">Engine Checkup</a>
+                    <a href="#process" class="text-sm font-medium text-slate-300 hover:text-white transition">Process</a>
+                </div>
+                <a href="#book" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium transition transform hover:scale-105">
+                    Book Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <div class="smoke"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="slide-in">
+                    <div class="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1.5 mb-6">
+                        <span class="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        <span class="text-sm font-medium text-blue-400">Now Serving All Hyderabad</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Engine Carbon Cleaning <br>
+                        <span class="gradient-text">At Your Doorstep</span>
+                    </h1>
+                    <p class="text-lg text-slate-400 mb-8 leading-relaxed max-w-lg">
+                        Remove harmful carbon deposits without opening your engine. Restore lost power, mileage, and smoothness in 45 minutes. We service all vehicles at your location.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button @click="scrollTo('what-is')" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition transform hover:scale-105 flex items-center justify-center space-x-2 pulse-ring relative">
+                            <span>Learn More</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                        <button @click="scrollTo('checkup')" class="glass hover:bg-slate-800 text-white px-8 py-4 rounded-full font-semibold text-lg transition border border-slate-700">
+                            Check Engine Health
+                        </button>
+                    </div>
+                    <div class="mt-8 flex items-center space-x-4 text-sm text-slate-500">
+                        <div class="flex items-center space-x-1">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            <span>All 6 Zones Covered</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <i data-lucide="clock" class="w-4 h-4"></i>
+                            <span>45-60 Min Service</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-3xl"></div>
+                    <div class="relative glass rounded-3xl p-8 border border-slate-700">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
+                                <i data-lucide="bike" class="w-8 h-8 text-blue-500 mb-2"></i>
+                                <div class="text-2xl font-bold">100cc+</div>
+                                <div class="text-xs text-slate-400">Bikes & Scooters</div>
+                            </div>
+                            <div class="bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
+                                <i data-lucide="car" class="w-8 h-8 text-purple-500 mb-2"></i>
+                                <div class="text-2xl font-bold">All CC</div>
+                                <div class="text-xs text-slate-400">Cars & SUVs</div>
+                            </div>
+                            <div class="bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
+                                <i data-lucide="truck" class="w-8 h-8 text-orange-500 mb-2"></i>
+                                <div class="text-2xl font-bold">Heavy</div>
+                                <div class="text-xs text-slate-400">Lorries & Buses</div>
+                            </div>
+                            <div class="bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
+                                <i data-lucide="battery-charging" class="w-8 h-8 text-green-500 mb-2"></i>
+                                <div class="text-2xl font-bold">30%</div>
+                                <div class="text-xs text-slate-400">Mileage Boost</div>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-slate-800">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-slate-400">Today's Slots Available</span>
+                                <span class="text-green-400 font-semibold flex items-center">
+                                    <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                                    5 Left
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Carbon Cleaning Section (NEW) -->
+    <section id="what-is" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center space-x-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-1.5 mb-6">
+                        <i data-lucide="help-circle" class="w-4 h-4 text-orange-400"></i>
+                        <span class="text-sm font-medium text-orange-400">Understanding The Problem</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">What is Engine Carbon Cleaning?</h2>
+                    <div class="space-y-4 text-slate-300 leading-relaxed">
+                        <p>
+                            <strong class="text-white">Carbon buildup</strong> is the accumulation of black soot and hardened fuel deposits inside your engine's combustion chamber, intake valves, fuel injectors, and exhaust system.
+                        </p>
+                        <p>
+                            Every time you drive, especially in Hyderabad's stop-and-go traffic, incomplete fuel combustion leaves behind carbon deposits. Over months and years, these deposits harden like arterial plaque, choking your engine's performance.
+                        </p>
+                        <div class="bg-slate-800/50 rounded-xl p-4 border-l-4 border-orange-500 my-6">
+                            <p class="text-sm italic">
+                                "Like cholesterol blocks human arteries, carbon blocks engine pathways. The result is reduced airflow, improper fuel mixing, and gradual power loss."
+                            </p>
+                        </div>
+                        <p>
+                            Traditional solutions require dismantling the engine (decarbonizing) which costs ₹3,000-5,000 and takes 2-3 days. <strong class="text-blue-400">Hydrogen Carbon Cleaning</strong> removes these deposits chemically without opening a single bolt—in just 45 minutes.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="x" class="w-4 h-4 text-red-500"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-white text-sm">Traditional Method</div>
+                                <div class="text-xs text-slate-400">Engine open, 2-3 days, high risk</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-white text-sm">Hydra Method</div>
+                                <div class="text-xs text-slate-400">Non-invasive, 45 mins, safe</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-3xl blur-3xl"></div>
+                    <div class="relative glass rounded-3xl p-6 border border-slate-700">
+                        <h3 class="font-semibold mb-4 flex items-center space-x-2">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-orange-500"></i>
+                            <span>Signs Your Engine Has Carbon Buildup</span>
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700">
+                                <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+                                <div class="flex-1">
+                                    <div class="text-sm font-medium">Black Smoke from Exhaust</div>
+                                    <div class="text-xs text-slate-500">Incomplete burning of fuel due to blocked injectors</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700">
+                                <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+                                <div class="flex-1">
+                                    <div class="text-sm font-medium">Reduced Mileage/KMPL</div>
+                                    <div class="text-xs text-slate-500">Engine works harder to produce same power</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700">
+                                <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+                                <div class="flex-1">
+                                    <div class="text-sm font-medium">Rough Idle & Vibrations</div>
+                                    <div class="text-xs text-slate-500">Uneven combustion causes shaking at standstill</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700">
+                                <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+                                <div class="flex-1">
+                                    <div class="text-sm font-medium">Sluggish Acceleration</div>
+                                    <div class="text-xs text-slate-500">Delayed throttle response, especially in 2nd/3rd gear</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700">
+                                <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                                <div class="flex-1">
+                                    <div class="text-sm font-medium">Engine Knocking Noises</div>
+                                    <div class="text-xs text-slate-500">Carbon hotspots causing premature ignition</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Technical (NEW) -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">The Science Behind Hydrogen Cleaning</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">No chemicals. No dismantling. Just pure hydrogen technology that dissolves carbon molecularly.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass rounded-2xl p-8 border border-slate-700 relative overflow-hidden group hover:border-blue-500/50 transition">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-500/20 transition"></div>
+                    <div class="w-14 h-14 bg-blue-500/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="flask-conical" class="w-7 h-7 text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">01. Hydrogen Generation</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Our machine uses electrolysis to split water into hydrogen and oxygen (HHO gas). This creates oxyhydrogen—a highly combustible, clean gas.
+                    </p>
+                </div>
+
+                <div class="glass rounded-2xl p-8 border border-slate-700 relative overflow-hidden group hover:border-purple-500/50 transition">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-purple-500/20 transition"></div>
+                    <div class="w-14 h-14 bg-purple-500/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="flame" class="w-7 h-7 text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">02. Combustion Process</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        HHO gas is fed into the engine's air intake. When ignited, it burns at 2000°C—hot enough to vaporize carbon deposits without damaging metal engine parts.
+                    </p>
+                </div>
+
+                <div class="glass rounded-2xl p-8 border border-slate-700 relative overflow-hidden group hover:border-green-500/50 transition">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-green-500/20 transition"></div>
+                    <div class="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="wind" class="w-7 h-7 text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">03. Exhaust & Result</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Carbon turns into gaseous CO2 and exits through exhaust. What remains is a clean combustion chamber, restored compression, and factory-fresh performance.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 glass rounded-2xl p-6 border border-slate-700 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-blue-500"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold">100% Safe for Your Engine</div>
+                        <div class="text-sm text-slate-400">No chemical additives. No risk of engine damage. Suitable for BS4/BS6 engines.</div>
+                    </div>
+                </div>
+                <div class="flex space-x-8 text-sm">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-blue-400">0</div>
+                        <div class="text-slate-500">Chemicals Used</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-purple-400">45</div>
+                        <div class="text-slate-500">Minutes Only</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-green-400">100%</div>
+                        <div class="text-slate-500">Eco-Friendly</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section (NEW) -->
+    <section id="benefits" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Carbon Clean Your Engine?</h2>
+                <p class="text-slate-400">Real benefits you'll notice from day one</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-blue-500/50 transition group">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="fuel" class="w-6 h-6 text-blue-500"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Better Mileage</h3>
+                    <p class="text-sm text-slate-400">Restore up to 30% lost fuel efficiency. Save ₹2,000-4,000 monthly on fuel depending on usage.</p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-green-500/50 transition group">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="zap" class="w-6 h-6 text-green-500"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">More Power</h3>
+                    <p class="text-sm text-slate-400">Recover lost horsepower. Feel instant pickup and smooth acceleration, especially on inclines.</p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-purple-500/50 transition group">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="volume-x" class="w-6 h-6 text-purple-500"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Quieter Engine</h3>
+                    <p class="text-sm text-slate-400">Eliminate rough idle and vibrations. Engine runs smoother with noticeably reduced noise levels.</p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-orange-500/50 transition group">
+                    <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="heart" class="w-6 h-6 text-orange-500"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Engine Longevity</h3>
+                    <p class="text-sm text-slate-400">Prevent costly repairs. Clean engines last 40% longer. Protects pistons, rings, and valves.</p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-red-500/50 transition group">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="cloud-off" class="w-6 h-6 text-red-500"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Less Pollution</h3>
+                    <p class="text-sm text-slate-400">Reduce harmful emissions by up to 70%. No more black smoke. Pass pollution checks easily.</p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-yellow-500/50 transition group">
+                    <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="cog" class="w-6 h-6 text-yellow-500"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Smooth Gear Shifts</h3>
+                    <p class="text-sm text-slate-400">Especially in bikes and automatic cars. Eliminates jerking and transmission lag.</p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition group">
+                    <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="thermometer" class="w-6 h-6 text-cyan-500"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Cooler Running</h3>
+                    <p class="text-sm text-slate-400">Clean engines run 15-20% cooler. Reduces risk of overheating in Hyderabad summers.</p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-slate-700 hover:border-pink-500/50 transition group">
+                    <div class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="banknote" class="w-6 h-6 text-pink-500"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Save Money</h3>
+                    <p class="text-sm text-slate-400">Avoid premature engine rebuilds. Save ₹15,000-50,000 in long-term maintenance costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (NEW) -->
+    <section class="py-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Common Questions</h2>
+                <p class="text-slate-400">Everything you need to know about carbon cleaning</p>
+            </div>
+
+            <div class="space-y-4">
+                <template x-for="(faq, index) in faqs" :key="index">
+                    <div class="glass rounded-xl border border-slate-700 overflow-hidden">
+                        <button @click="toggleFaq(index)" class="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-slate-800/50 transition">
+                            <span class="font-semibold text-slate-200" x-text="faq.question"></span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform" :class="{'rotate-180': openFaq === index}"></i>
+                        </button>
+                        <div class="accordion-content" :class="{'open': openFaq === index}">
+                            <div class="px-6 pb-4 text-slate-400 text-sm leading-relaxed" x-text="faq.answer"></div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <div class="mt-8 text-center">
+                <p class="text-slate-500 text-sm">Still have questions? <a href="https://wa.me/919550732552" class="text-blue-400 hover:underline">Ask on WhatsApp</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carbon Checkup Tool -->
+    <section id="checkup" class="py-20 bg-slate-900/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Is Your Engine Choking?</h2>
+                <p class="text-slate-400">Take this 2-minute diagnostic to check your engine's carbon health score</p>
+            </div>
+
+            <div class="glass rounded-3xl p-6 md:p-8 border border-slate-700 shadow-2xl">
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="flex justify-between text-sm text-slate-400 mb-2">
+                        <span>Question <span x-text="currentQuestion + 1"></span> of <span x-text="questions.length"></span></span>
+                        <span x-text="Math.round((currentQuestion / questions.length) * 100) + '%'"></span>
+                    </div>
+                    <div class="w-full bg-slate-800 rounded-full h-2">
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-500"
+                             :style="'width: ' + ((currentQuestion / questions.length) * 100) + '%'"></div>
+                    </div>
+                </div>
+
+                <!-- Question Container -->
+                <div x-show="!showResult" x-transition>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-6" x-text="questions[currentQuestion].text"></h3>
+
+                    <div class="space-y-3">
+                        <template x-for="(option, index) in questions[currentQuestion].options" :key="index">
+                            <button @click="selectOption(option.score)"
+                                    class="option-card w-full p-4 rounded-xl border border-slate-700 bg-slate-800/50 text-left hover:bg-slate-800 transition flex items-center justify-between group"
+                                    :class="{'selected': selectedOption === index}"
+                                    @click="selectedOption = index">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center group-hover:bg-blue-500/20 group-hover:text-blue-400 transition"
+                                         x-html="option.icon"></div>
+                                    <span class="font-medium" x-text="option.text"></span>
+                                </div>
+                                <i data-lucide="chevron-right" class="w-5 h-5 text-slate-600 group-hover:text-blue-400"></i>
+                            </button>
+                        </template>
+                    </div>
+
+                    <div class="mt-6 flex justify-between">
+                        <button x-show="currentQuestion > 0" @click="prevQuestion" class="text-slate-400 hover:text-white transition flex items-center space-x-2">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                            <span>Back</span>
+                        </button>
+                        <button x-show="selectedOption !== null" @click="nextQuestion"
+                                class="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium transition">
+                            Continue
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div x-show="showResult" x-transition.opacity class="text-center py-8">
+                    <div class="relative w-48 h-48 mx-auto mb-6">
+                        <svg class="w-full h-64 transform -rotate-90" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="#1e293b" stroke-width="8"></circle>
+                            <circle cx="50" cy="50" r="45" fill="none" :stroke="scoreColor" stroke-width="8"
+                                    stroke-dasharray="283" :stroke-dashoffset="283 - (283 * totalScore / 100)"
+                                    stroke-linecap="round" class="transition-all duration-1000 ease-out"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span class="text-4xl font-bold" x-text="totalScore"></span>
+                            <span class="text-sm text-slate-400">/100</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-2" :class="resultText.color" x-text="resultText.title"></h3>
+                    <p class="text-slate-400 mb-6 max-w-md mx-auto" x-text="resultText.description"></p>
+
+                    <div class="bg-slate-800/50 rounded-2xl p-6 mb-6 text-left border border-slate-700">
+                        <h4 class="font-semibold mb-3 flex items-center space-x-2">
+                            <i data-lucide="alert-circle" class="w-5 h-5 text-blue-500"></i>
+                            <span>Our Recommendation</span>
+                        </h4>
+                        <p class="text-slate-300 text-sm leading-relaxed" x-text="resultText.recommendation"></p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button @click="scrollTo('book')" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-semibold transition">
+                            Book Cleaning Now
+                        </button>
+                        <button @click="resetQuiz" class="glass text-slate-300 px-8 py-3 rounded-full font-medium hover:bg-slate-800 transition">
+                            Retake Checkup
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="process" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple 4-Step Process</h2>
+                <p class="text-slate-400">Professional service without the workshop hassle</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="relative">
+                    <div class="glass rounded-2xl p-6 border border-slate-700 h-full">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                            <span class="text-2xl font-bold text-blue-500">1</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Book Slot</h3>
+                        <p class="text-sm text-slate-400">Choose your zone and preferred time slot. We confirm via WhatsApp within 10 minutes.</p>
+                    </div>
+                    <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-slate-700"></div>
+                </div>
+
+                <div class="relative">
+                    <div class="glass rounded-2xl p-6 border border-slate-700 h-full">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                            <span class="text-2xl font-bold text-purple-500">2</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Inspection</h3>
+                        <p class="text-sm text-slate-400">Our technician arrives, diagnoses carbon levels using diagnostic tools, and explains the process.</p>
+                    </div>
+                    <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-slate-700"></div>
+                </div>
+
+                <div class="relative">
+                    <div class="glass rounded-2xl p-6 border border-slate-700 h-full">
+                        <div class="w-12 h-12 bg-orange-500/20 rounded-xl flex items-center justify-center mb-4">
+                            <span class="text-2xl font-bold text-orange-500">3</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Deep Cleaning</h3>
+                        <p class="text-sm text-slate-400">45-60 minutes of hydrogen-based carbon cleaning. No dismantling. No chemicals.</p>
+                    </div>
+                    <div class="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-slate-700"></div>
+                </div>
+
+                <div>
+                    <div class="glass rounded-2xl p-6 border border-slate-700 h-full">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                            <span class="text-2xl font-bold text-green-500">4</span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">Pay & Go</h3>
+                        <p class="text-sm text-slate-400">Test drive to feel the difference. Pay the remaining amount via Cash/UPI. Get warranty card.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Map -->
+    <section id="coverage" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Complete Hyderabad Coverage</h2>
+                    <p class="text-slate-400 mb-8">We serve all 6 zones of Hyderabad with optimized routing to ensure timely service.</p>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass p-4 rounded-xl border border-slate-700">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+                                <span class="font-semibold">Central</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Banjara Hills, Jubilee Hills, Begumpet, Somajiguda</p>
+                        </div>
+                        <div class="glass p-4 rounded-xl border border-slate-700">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="w-3 h-3 rounded-full bg-purple-500"></div>
+                                <span class="font-semibold">West</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Gachibowli, Madhapur, Kondapur, Miyapur</p>
+                        </div>
+                        <div class="glass p-4 rounded-xl border border-slate-700">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="w-3 h-3 rounded-full bg-orange-500"></div>
+                                <span class="font-semibold">East</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Uppal, LB Nagar, Nagole, Dilsukhnagar</p>
+                        </div>
+                        <div class="glass p-4 rounded-xl border border-slate-700">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <span class="font-semibold">North</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Secunderabad, Alwal, Malkajgiri, Trimulgherry</p>
+                        </div>
+                        <div class="glass p-4 rounded-xl border border-slate-700">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <span class="font-semibold">South</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Attapur, Mehdipatnam, Tolichowki, Shamshabad</p>
+                        </div>
+                        <div class="glass p-4 rounded-xl border border-slate-700">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <span class="font-semibold">Old City</span>
+                            </div>
+                            <p class="text-xs text-slate-500">Charminar, Falaknuma, Bahadurpura, Chandrayangutta</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass rounded-3xl p-8 border border-slate-700">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="clock" class="w-5 h-5 text-blue-500"></i>
+                                <span class="font-medium">Service Duration</span>
+                            </div>
+                            <span class="text-slate-400">45-60 Minutes</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="shield" class="w-5 h-5 text-green-500"></i>
+                                <span class="font-medium">Warranty</span>
+                            </div>
+                            <span class="text-slate-400">15 Days</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="refresh-ccw" class="w-5 h-5 text-purple-500"></i>
+                                <span class="font-medium">Money Back</span>
+                            </div>
+                            <span class="text-slate-400">No Improvement = Refund</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="calculator" class="w-5 h-5 text-orange-500"></i>
+                                <span class="font-medium">Pricing</span>
+                            </div>
+                            <span class="text-slate-400">Based on CC (Affordable)</span>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-slate-700 text-center text-sm text-slate-500">
+                        Not sure about your zone? WhatsApp us your location
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="book" class="py-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Book Your Service</h2>
+                <p class="text-slate-400">₹200 advance to confirm your slot (adjusted in final bill)</p>
+            </div>
+
+            <div class="glass rounded-3xl p-6 md:p-8 border border-slate-700">
+                <form @submit.prevent="submitBooking" class="space-y-6">
+                    <!-- Vehicle Details -->
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Vehicle Type</label>
+                            <select x-model="booking.vehicleType" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition">
+                                <option value="">Select Type</option>
+                                <option value="Bike">Bike / Scooter</option>
+                                <option value="Car">Car / Hatchback</option>
+                                <option value="SUV">SUV / MUV</option>
+                                <option value="Auto">Auto Rickshaw</option>
+                                <option value="Van">Van</option>
+                                <option value="Lorry">Lorry / Truck</option>
+                                <option value="Bus">Bus</option>
+                                <option value="DCM">DCM / Pickup</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Engine CC</label>
+                            <input type="text" x-model="booking.cc" placeholder="e.g., 150, 1200, 3000"
+                                   class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Brand</label>
+                            <input type="text" x-model="booking.brand" placeholder="e.g., Honda, Tata, Royal Enfield"
+                                   class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Model</label>
+                            <input type="text" x-model="booking.model" placeholder="e.g., City, Swift, Classic 350"
+                                   class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition">
+                        </div>
+                    </div>
+
+                    <!-- Zone Selection -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Your Zone</label>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <template x-for="zone in zones" :key="zone.name">
+                                <button type="button"
+                                        @click="booking.zone = zone.name"
+                                        class="p-3 rounded-xl border text-sm font-medium transition text-left"
+                                        :class="booking.zone === zone.name ? 'border-blue-500 bg-blue-500/20 text-blue-400' : 'border-slate-700 bg-slate-800/50 text-slate-400 hover:border-slate-600'">
+                                    <div x-text="zone.name"></div>
+                                    <div class="text-xs opacity-70 mt-1" x-text="zone.areas"></div>
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Date & Time -->
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Preferred Date</label>
+                            <input type="date" x-model="booking.date" :min="minDate"
+                                   class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Time Slot</label>
+                            <select x-model="booking.time" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition">
+                                <option value="">Select Time</option>
+                                <option value="9-11 AM">Morning (9:00 AM - 11:00 AM)</option>
+                                <option value="11-1 PM">Late Morning (11:00 AM - 1:00 PM)</option>
+                                <option value="2-4 PM">Afternoon (2:00 PM - 4:00 PM)</option>
+                                <option value="4-6 PM">Evening (4:00 PM - 6:00 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Personal Details -->
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+                            <input type="text" x-model="booking.name" placeholder="Your name"
+                                   class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Phone Number</label>
+                            <input type="tel" x-model="booking.phone" placeholder="10-digit number" maxlength="10"
+                                   class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Complete Address</label>
+                        <textarea x-model="booking.address" rows="3" placeholder="House no, Street, Landmark, Pincode"
+                                  class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition"></textarea>
+                    </div>
+
+                    <!-- Carbon Score (if available) -->
+                    <div x-show="totalScore > 0" class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 flex items-center justify-between">
+                        <div>
+                            <div class="text-sm text-blue-400">Carbon Health Score</div>
+                            <div class="text-2xl font-bold text-blue-500" x-text="totalScore + '/100'"></div>
+                        </div>
+                        <button type="button" @click="scrollTo('checkup')" class="text-sm text-blue-400 hover:text-blue-300 underline">Retake</button>
+                    </div>
+
+                    <button type="submit"
+                            class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 rounded-xl transition transform hover:scale-[1.02] flex items-center justify-center space-x-2 shadow-lg shadow-blue-500/25">
+                        <span>Book via WhatsApp</span>
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    </button>
+
+                    <p class="text-center text-xs text-slate-500">
+                        You'll be redirected to WhatsApp to confirm your booking. No payment required now.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-slate-900/50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Customer Stories</h2>
+            <p class="text-slate-400 text-center">Real results from Hyderabad vehicle owners</p>
+        </div>
+
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <!-- Testimonial Cards (Duplicated for infinite scroll) -->
+                <template x-for="i in 2" :key="i">
+                    <div class="flex space-x-6 px-3">
+                        <div class="glass w-80 flex-shrink-0 p-6 rounded-2xl border border-slate-700">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-sm font-bold">SK</div>
+                                <div>
+                                    <div class="font-semibold">Shiva Kumar</div>
+                                    <div class="text-xs text-slate-500">Honda City • Gachibowli</div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-300">"Mileage improved from 12kmpl to 15.5kmpl after cleaning. Engine sound is much smoother now. Worth every rupee!"</p>
+                            <div class="flex text-yellow-500 mt-3 text-xs">★★★★★</div>
+                        </div>
+
+                        <div class="glass w-80 flex-shrink-0 p-6 rounded-2xl border border-slate-700">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-sm font-bold">RA</div>
+                                <div>
+                                    <div class="font-semibold">Rahim Ahmed</div>
+                                    <div class="text-xs text-slate-500">Royal Enfield • Charminar</div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-300">"My bike was vibrating heavily at idle. After Hydra cleaning, it's running like new. They came to my home too."</p>
+                            <div class="flex text-yellow-500 mt-3 text-xs">★★★★★</div>
+                        </div>
+
+                        <div class="glass w-80 flex-shrink-0 p-6 rounded-2xl border border-slate-700">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-sm font-bold">PV</div>
+                                <div>
+                                    <div class="font-semibold">Prasad Varma</div>
+                                    <div class="text-xs text-slate-500">Tata Ace • LB Nagar</div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-300">"Commercial vehicle experts! My pickup truck had lost power. They restored the pickup completely. Professional service."</p>
+                            <div class="flex text-yellow-500 mt-3 text-xs">★★★★★</div>
+                        </div>
+
+                        <div class="glass w-80 flex-shrink-0 p-6 rounded-2xl border border-slate-700">
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-sm font-bold">LK</div>
+                                <div>
+                                    <div class="font-semibold">Lakshmi K</div>
+                                    <div class="text-xs text-slate-500">Hyundai Creta • Secunderabad</div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-300">"No more black smoke from exhaust! The technician explained the process clearly. Very transparent pricing."</p>
+                            <div class="flex text-yellow-500 mt-3 text-xs">★★★★★</div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="droplets" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="font-bold text-xl">Hydra<span class="gradient-text">Carbon</span></span>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-xs">
+                        Hyderabad's trusted mobile engine carbon cleaning service. We restore performance, reduce emissions, and extend engine life.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Service Areas</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li>All Hyderabad Zones</li>
+                        <li>Doorstep Service</li>
+                        <li>Same Day Available</li>
+                        <li>Emergency Service</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                            <span>WhatsApp Only</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="clock" class="w-4 h-4"></i>
+                            <span>9:00 AM - 6:00 PM</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                            <span>Mon - Sat</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 text-center text-sm text-slate-500">
+                <p>&copy; 2024 Hydra Carbon Cleaning. All rights reserved. | Serving Hyderabad with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function hydraApp() {
+            return {
+                currentQuestion: 0,
+                selectedOption: null,
+                totalScore: 0,
+                showResult: false,
+                minDate: new Date().toISOString().split('T')[0],
+                openFaq: null,
+
+                questions: [
+                    {
+                        text: "What type of vehicle do you have?",
+                        options: [
+                            { text: "Bike / Scooter (100-350cc)", score: 0, icon: '<i data-lucide="bike" class="w-5 h-5"></i>' },
+                            { text: "Car / Hatchback / Sedan", score: 0, icon: '<i data-lucide="car" class="w-5 h-5"></i>' },
+                            { text: "SUV / MUV / Van", score: 0, icon: '<i data-lucide="truck" class="w-5 h-5"></i>' },
+                            { text: "Commercial (Auto/Lorry/Bus)", score: 0, icon: '<i data-lucide="bus" class="w-5 h-5"></i>' }
+                        ]
+                    },
+                    {
+                        text: "What color is your exhaust smoke?",
+                        options: [
+                            { text: "No visible smoke", score: 5, icon: '<div class="w-5 h-5 rounded-full bg-green-500"></div>' },
+                            { text: "Light gray / White", score: 15, icon: '<div class="w-5 h-5 rounded-full bg-gray-400"></div>' },
+                            { text: "Dark gray", score: 25, icon: '<div class="w-5 h-5 rounded-full bg-gray-600"></div>' },
+                            { text: "Black / Thick smoke", score: 35, icon: '<div class="w-5 h-5 rounded-full bg-gray-900 border border-gray-600"></div>' }
+                        ]
+                    },
+                    {
+                        text: "How is your engine idle?",
+                        options: [
+                            { text: "Smooth and stable", score: 5, icon: '<i data-lucide="activity" class="w-5 h-5 text-green-500"></i>' },
+                            { text: "Slightly rough", score: 15, icon: '<i data-lucide="activity" class="w-5 h-5 text-yellow-500"></i>' },
+                            { text: "Heavy vibrations", score: 25, icon: '<i data-lucide="activity" class="w-5 h-5 text-orange-500"></i>' },
+                            { text: "Stalling / Uneven", score: 35, icon: '<i data-lucide="alert-triangle" class="w-5 h-5 text-red-500"></i>' }
+                        ]
+                    },
+                    {
+                        text: "Any acceleration lag?",
+                        options: [
+                            { text: "Instant response", score: 5, icon: '<i data-lucide="zap" class="w-5 h-5 text-green-500"></i>' },
+                            { text: "Slight delay", score: 15, icon: '<i data-lucide="zap" class="w-5 h-5 text-yellow-500"></i>' },
+                            { text: "Noticeable lag", score: 25, icon: '<i data-lucide="zap-off" class="w-5 h-5 text-orange-500"></i>' },
+                            { text: "Very sluggish", score: 35, icon: '<i data-lucide="snail" class="w-5 h-5 text-red-500"></i>' }
+                        ]
+                    },
+                    {
+                        text: "Has your mileage dropped?",
+                        options: [
+                            { text: "Same as before", score: 5, icon: '<i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i>' },
+                            { text: "10-15% decrease", score: 15, icon: '<i data-lucide="trending-down" class="w-5 h-5 text-yellow-500"></i>' },
+                            { text: "20-25% decrease", score: 25, icon: '<i data-lucide="trending-down" class="w-5 h-5 text-orange-500"></i>' },
+                            { text: "More than 30%", score: 35, icon: '<i data-lucide="trending-down" class="w-5 h-5 text-red-500"></i>' }
+                        ]
+                    },
+                    {
+                        text: "Engine startup difficulty?",
+                        options: [
+                            { text: "Starts immediately", score: 5, icon: '<i data-lucide="power" class="w-5 h-5 text-green-500"></i>' },
+                            { text: "2-3 seconds delay", score: 15, icon: '<i data-lucide="timer" class="w-5 h-5 text-yellow-500"></i>' },
+                            { text: "Multiple cranks needed", score: 25, icon: '<i data-lucide="refresh-cw" class="w-5 h-5 text-orange-500"></i>' },
+                            { text: "Hard to start when cold", score: 35, icon: '<i data-lucide="snowflake" class="w-5 h-5 text-red-500"></i>' }
+                        ]
+                    },
+                    {
+                        text: "When did you last service the engine?",
+                        options: [
+                            { text: "Recently (< 6 months)", score: 5, icon: '<i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>' },
+                            { text: "6-12 months ago", score: 15, icon: '<i data-lucide="clock" class="w-5 h-5 text-yellow-500"></i>' },
+                            { text: "1-2 years ago", score: 25, icon: '<i data-lucide="alert-circle" class="w-5 h-5 text-orange-500"></i>' },
+                            { text: "Don't remember / Never", score: 35, icon: '<i data-lucide="x-circle" class="w-5 h-5 text-red-500"></i>' }
+                        ]
+                    }
+                ],
+
+                zones: [
+                    { name: 'Central', areas: 'Banjara Hills, Jubilee, Begumpet' },
+                    { name: 'West', areas: 'Gachibowli, Madhapur, Kondapur' },
+                    { name: 'East', areas: 'Uppal, LB Nagar, Dilsukhnagar' },
+                    { name: 'North', areas: 'Secunderabad, Alwal, Malkajgiri' },
+                    { name: 'South', areas: 'Attapur, Mehdipatnam, Shamshabad' },
+                    { name: 'Old City', areas: 'Charminar, Falaknuma, Chandrayangutta' }
+                ],
+
+                faqs: [
+                    {
+                        question: "Is carbon cleaning safe for my new car/bike?",
+                        answer: "Yes, absolutely. Our hydrogen cleaning process is non-invasive and safe for all engines including BS6 compliant vehicles. Unlike chemical flushing, it doesn't leave any residue. In fact, new vehicles (1-2 years old) benefit greatly as preventive maintenance, preventing severe buildup later."
+                    },
+                    {
+                        question: "How is this different from regular engine servicing?",
+                        answer: "Regular servicing changes oil, filters, and spark plugs but doesn't clean internal carbon deposits. Carbon cleaning specifically targets the combustion chamber, valves, and injectors where carbon accumulates. Think of it as a deep detox for your engine's internals."
+                    },
+                    {
+                        question: "Will it damage my engine or void warranty?",
+                        answer: "No. Since we don't open the engine or use chemicals, there's no risk of physical damage. For warranty, manufacturers cannot void warranty for carbon cleaning as it's external maintenance. However, we recommend informing them if your vehicle is under 1 year old."
+                    },
+                    {
+                        question: "How often should I do carbon cleaning?",
+                        answer: "For bikes: Every 10,000-12,000 km. For cars: Every 15,000-20,000 km. For commercial vehicles: Every 6 months. If you drive in heavy Hyderabad traffic daily, consider doing it slightly earlier as stop-and-go traffic accelerates carbon buildup."
+                    },
+                    {
+                        question: "What if I don't see any improvement?",
+                        answer: "We offer a 15-day warranty. If you don't notice better pickup, mileage, or smoothness, we refund 100% of your money. However, 95% of our customers notice immediate improvement in throttle response within the first drive."
+                    },
+                    {
+                        question: "Do I need to come to your workshop?",
+                        answer: "No! That's our USP. We are 100% mobile. Our technician comes to your home, office, or any location in Hyderabad with the portable HHO machine. You just need to provide power source (normal 16A plug) and space to park."
+                    }
+                ],
+
+                booking: {
+                    vehicleType: '',
+                    cc: '',
+                    brand: '',
+                    model: '',
+                    zone: '',
+                    date: '',
+                    time: '',
+                    name: '',
+                    phone: '',
+                    address: ''
+                },
+
+                get scoreColor() {
+                    if (this.totalScore <= 25) return '#22c55e';
+                    if (this.totalScore <= 60) return '#eab308';
+                    return '#ef4444';
+                },
+
+                get resultText() {
+                    if (this.totalScore <= 25) return {
+                        title: 'Optimal Condition',
+                        color: 'text-green-500',
+                        description: 'Your engine is in good shape! Carbon buildup is minimal.',
+                        recommendation: 'While cleaning isn\'t urgent, a preventive cleaning can maintain this performance and prevent future deposits. Consider scheduling in the next 2-3 months.'
+                    };
+                    if (this.totalScore <= 60) return {
+                        title: 'Carbon Detected',
+                        color: 'text-yellow-500',
+                        description: 'Moderate carbon buildup is affecting your engine efficiency.',
+                        recommendation: 'We recommend carbon cleaning within 2 weeks. You should see 15-20% improvement in mileage and smoother acceleration. Risk of long-term damage if delayed.'
+                    };
+                    return {
+                        title: 'Critical Buildup',
+                        color: 'text-red-500',
+                        description: 'Heavy carbon deposits are significantly harming engine performance.',
+                        recommendation: 'Immediate cleaning required! Continued use may damage injectors, pistons, and catalytic converter. Book today to restore performance and avoid expensive repairs.'
+                    };
+                },
+
+                selectOption(score) {
+                    this.totalScore += score;
+                    setTimeout(() => {
+                        this.nextQuestion();
+                    }, 300);
+                },
+
+                nextQuestion() {
+                    if (this.currentQuestion < this.questions.length - 1) {
+                        this.currentQuestion++;
+                        this.selectedOption = null;
+                    } else {
+                        this.showResult = true;
+                    }
+                },
+
+                prevQuestion() {
+                    if (this.currentQuestion > 0) {
+                        this.currentQuestion--;
+                        this.selectedOption = null;
+                    }
+                },
+
+                resetQuiz() {
+                    this.currentQuestion = 0;
+                    this.totalScore = 0;
+                    this.showResult = false;
+                    this.selectedOption = null;
+                },
+
+                toggleFaq(index) {
+                    this.openFaq = this.openFaq === index ? null : index;
+                },
+
+                scrollTo(id) {
+                    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+                },
+
+                submitBooking() {
+                    // Validation
+                    if (!this.booking.vehicleType || !this.booking.zone || !this.booking.date || !this.booking.time || !this.booking.name || !this.booking.phone) {
+                        alert('Please fill all required fields');
+                        return;
+                    }
+
+                    if (this.booking.phone.length !== 10) {
+                        alert('Please enter valid 10-digit phone number');
+                        return;
+                    }
+
+                    // Construct WhatsApp message
+                    const message = `*New Booking - Hydra Carbon Cleaning*%0A%0A` +
+                                   `*Customer:* ${this.booking.name}%0A` +
+                                   `*Phone:* ${this.booking.phone}%0A%0A` +
+                                   `*Vehicle:* ${this.booking.vehicleType}%0A` +
+                                   `*Brand:* ${this.booking.brand || 'Not specified'}%0A` +
+                                   `*Model:* ${this.booking.model || 'Not specified'}%0A` +
+                                   `*CC:* ${this.booking.cc || 'Not specified'}%0A%0A` +
+                                   `*Zone:* ${this.booking.zone}%0A` +
+                                   `*Address:* ${this.booking.address}%0A%0A` +
+                                   `*Preferred:* ${this.booking.date} at ${this.booking.time}%0A` +
+                                   `*Carbon Score:* ${this.totalScore > 0 ? this.totalScore + '/100' : 'Not taken'}%0A%0A` +
+                                   `Please confirm slot availability.`;
+
+                    // Replace with your WhatsApp Business number
+                    const phoneNumber = '919550732552';
+
+                    // Open WhatsApp
+                    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+                }
+            }
+        }
+
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
